@@ -1,0 +1,96 @@
+# TF-UPGRADE-TODO: Block type was not recognized, so this block and its contents were not automatically upgraded.
+// provider "aws" {
+//   region = "us-east-1"
+// }
+//
+// resource "aws_instance" "example" {
+//   ami           = "ami-0c94855ba95c71c99"
+//   instance_type = "t2.micro"
+//   vpc_security_group_ids = [aws_security_group.instance.id]
+//   user_data = <<-EOF
+//               #!/bin/bash
+//               echo "Hello, World" > index.html
+//               nohup busybox httpd -f -p 8080 &
+//               EOF
+//   tags = {
+//     Name = "Terraform-Server"
+//   }
+// }
+//
+// resource "aws_security_group" "instance" {
+//   name = "terraform-example-instance"
+//   ingress {
+//     from_port   = 8080
+//     to_port     = 8080
+//     protocol    = "tcp"
+//     cidr_blocks = ["0.0.0.0/0"]
+//   }
+// }
+// provider "docker" {
+//
+// }
+//
+// variable "image_name" {
+//   description = "Select an image to use."
+// }
+// output "tomcat_ip_address" {
+//   value = docker_container.tomcat.ip_address
+// }
+// output "tomcat_id" {
+//   value = docker_container.tomcat.id
+// }
+// resource "docker_image" "tomcat" {
+//   // name = "nginx:latest"
+//   name = var.image_name
+// }
+// resource "docker_container" "tomcat" {
+//   image = docker_image.tomcat.latest
+//   name = "tomcat-contianer"
+//   ports {
+//     internal = 8080
+//     external = 9090
+//   }
+//   logs = true
+// }
+// provider "aws" {
+//   region = "us-east-1"
+// }
+// output "ubuntu_ip_address" {
+//   value = aws_instance.ubuntu.public_ip
+// }
+// resource "aws_instance" "ubuntu" {
+//   ami = "ami-0dba2cb6798deb6d8"
+//   instance_type = "t2.micro"
+//   tags = {
+//     Name = "Ubuntu-Server"
+//   }
+//   key_name = "main-key"
+//   user_data = <<-EOF
+//         #!/bin/bash
+//         sudo apt update -y
+//         sudo apt install apache2 -y
+//         sudo systemctl start apache2
+//         sudo bash -c "echo Hello Vijay You Are Great > /var/www/html/index.html"
+//         EOF
+// }
+// resource "aws_security_group" "my-security-group" {
+//   name = "My Ubuntu sg"
+//   ingress {
+//     from_port = 22
+//     to_port = 22
+//     protocol = "tcp"
+//     cidr_blocks = ["0.0.0.0/0"]
+//   }
+//   ingress {
+//     from_port = 80
+//     to_port = 80
+//     protocol = "tcp"
+//     cidr_blocks = ["0.0.0.0/0"]
+//   }
+//   ingress {
+//     from_port = 443
+//     to_port = 443
+//     protocol = "tcp"
+//     cidr_blocks = ["0.0.0.0/0"]
+//   }
+// }
